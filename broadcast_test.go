@@ -11,8 +11,8 @@ func TestBroadcastCreation(t *testing.T) {
 func TestBroadcasting(t *testing.T) {
 	b := NewBroadcaster(10)
 
-	r1 := b.CreateReciever()
-	r2 := b.CreateReciever()
+	r1 := b.CreateReceiver()
+	r2 := b.CreateReceiver()
 
 	b.Sender() <- 100
 
@@ -28,8 +28,8 @@ func TestBroadcasting(t *testing.T) {
 func TestBroadcastClose(t *testing.T) {
 	b := NewBroadcaster(10)
 
-	r1 := b.CreateReciever()
-	r2 := b.CreateReciever()
+	r1 := b.CreateReceiver()
+	r2 := b.CreateReceiver()
 
 	close(b.Sender())
 
@@ -42,13 +42,13 @@ func TestBroadcastRace(t *testing.T) {
 	b := NewBroadcaster(1000)
 
 	go func() {
-		b.CreateReciever()
+		b.CreateReceiver()
 	}()
 	go func() {
-		b.CreateReciever()
+		b.CreateReceiver()
 	}()
 	go func() {
-		b.CreateReciever()
+		b.CreateReceiver()
 	}()
 
 	go func() {

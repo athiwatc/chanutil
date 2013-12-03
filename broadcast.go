@@ -5,10 +5,10 @@ import (
 )
 
 type broadcast struct {
-	sender    chan interface{}
-	recievers []chan interface{}
-	buff      int
-	mu        sync.Mutex
+	sender   chan interface{}
+	receiver []chan interface{}
+	buff     int
+	mu       sync.Mutex
 }
 
 func NewBroadcaster(buffer_len int) *broadcast {
@@ -21,13 +21,13 @@ func NewBroadcaster(buffer_len int) *broadcast {
 
 	go func() {
 		for s := range b.sender {
-			for _, r := range b.recievers {
+			for _, r := range b.receiver {
 				r <- s
 			}
 		}
 
 		// The sender channel is closed
-		for _, r := range b.recievers {
+		for _, r := range b.receiver {
 			close(r)
 		}
 	}()
@@ -38,12 +38,12 @@ func (b *broadcast) Sender() chan<- interface{} {
 	return b.sender
 }
 
-func (b *broadcast) CreateReciever() <-chan interface{} {
-	new_reciever := make(chan interface{}, b.buff)
+func (b *broadcast) CreateReceiver() <-chan interface{} {
+	new_receiver := make(chan interface{}, b.buff)
 
 	b.mu.Lock()
-	b.recievers = append(b.recievers, new_reciever)
+	b.receiver = append(b.receiver, new_receiver)
 	b.mu.Unlock()
 
-	return new_reciever
+	return new_receiver
 }
