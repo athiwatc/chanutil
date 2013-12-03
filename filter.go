@@ -12,8 +12,8 @@ type Filter struct {
 }
 
 // Use this function to setup a new Filter
-func NewFilter(filterFunc FilterInterface, buffer_len int) *filter {
-	f := &filter{}
+func NewFilter(filterFunc FilterInterface, buffer_len int) *Filter {
+	f := &Filter{}
 	f.sender = make(chan interface{}, buffer_len)
 	f.receiver = make(chan interface{}, buffer_len)
 

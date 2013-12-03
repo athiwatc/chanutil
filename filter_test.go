@@ -11,7 +11,7 @@ func (a AFilterFunc) Want(i interface{}) bool {
 }
 
 func TestFilter(t *testing.T) {
-	var a Filter = AFilterFunc{}
+	var a FilterInterface = AFilterFunc{}
 	f := NewFilter(a, 20)
 
 	f.Sender() <- 1

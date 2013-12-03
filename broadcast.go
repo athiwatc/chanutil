@@ -12,9 +12,9 @@ type Broadcast struct {
 }
 
 // Use this function to setup a new Broadcaster
-func NewBroadcaster(buffer_len int) *broadcast {
+func NewBroadcaster(buffer_len int) *Broadcast {
 	//fmt.Println("test")
-	b := &broadcast{}
+	b := &Broadcast{}
 
 	b.buff = buffer_len
 
