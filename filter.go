@@ -1,15 +1,18 @@
 package chanutil
 
-type Filter interface {
+// Implement this for use with the NewFilter function.
+type FilterInterface interface {
+	// Return true if you want to the value to get sent to the output channel
 	Want(interface{}) bool
 }
 
-type filter struct {
+type Filter struct {
 	sender   chan interface{}
 	receiver chan interface{}
 }
 
-func NewFilter(filterFunc Filter, buffer_len int) *filter {
+// Use this function to setup a new Filter
+func NewFilter(filterFunc FilterInterface, buffer_len int) *filter {
 	f := &filter{}
 	f.sender = make(chan interface{}, buffer_len)
 	f.receiver = make(chan interface{}, buffer_len)
@@ -28,10 +31,12 @@ func NewFilter(filterFunc Filter, buffer_len int) *filter {
 	return f
 }
 
-func (f *filter) Sender() chan<- interface{} {
+// Get Sender
+func (f *Filter) Sender() chan<- interface{} {
 	return f.sender
 }
 
-func (f *filter) Receiver() <-chan interface{} {
+// Get Receiver
+func (f *Filter) Receiver() <-chan interface{} {
 	return f.receiver
 }

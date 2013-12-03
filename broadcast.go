@@ -4,13 +4,14 @@ import (
 	"sync"
 )
 
-type broadcast struct {
+type Broadcast struct {
 	sender   chan interface{}
 	receiver []chan interface{}
 	buff     int
 	mu       sync.Mutex
 }
 
+// Use this function to setup a new Broadcaster
 func NewBroadcaster(buffer_len int) *broadcast {
 	//fmt.Println("test")
 	b := &broadcast{}
@@ -34,11 +35,13 @@ func NewBroadcaster(buffer_len int) *broadcast {
 	return b
 }
 
-func (b *broadcast) Sender() chan<- interface{} {
+// Get a Sender
+func (b *Broadcast) Sender() chan<- interface{} {
 	return b.sender
 }
 
-func (b *broadcast) CreateReceiver() <-chan interface{} {
+// Create and return a new Receiver
+func (b *Broadcast) CreateReceiver() <-chan interface{} {
 	new_receiver := make(chan interface{}, b.buff)
 
 	b.mu.Lock()
