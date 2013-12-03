@@ -1,4 +1,5 @@
 # chanutil
+[![Build Status](https://travis-ci.org/athiwatc/chanutil.png?branch=master)](https://travis-ci.org/athiwatc/chanutil)
 Everything that I use in my projects that has pattern that deals with channels.
 All of this is the pattern I needed in each of my projects which might not be ideal for general uses.
 
