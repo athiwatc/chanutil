@@ -31,12 +31,12 @@ func NewFilter(filterFunc FilterInterface, buffer_len int) *Filter {
 	return f
 }
 
-// Get Sender
+// Get the Sender
 func (f *Filter) Sender() chan<- interface{} {
 	return f.sender
 }
 
-// Get Receiver
+// Get the Receiver
 func (f *Filter) Receiver() <-chan interface{} {
 	return f.receiver
 }

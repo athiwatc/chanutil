@@ -35,7 +35,7 @@ func NewBroadcaster(buffer_len int) *Broadcast {
 	return b
 }
 
-// Get a Sender
+// Get the Sender
 func (b *Broadcast) Sender() chan<- interface{} {
 	return b.sender
 }
