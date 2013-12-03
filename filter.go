@@ -2,7 +2,7 @@ package chanutil
 
 // Implement this for use with the NewFilter function.
 type FilterInterface interface {
-	// Return true if you want to the value to get sent to the output channel
+	// Return true if you want the value to get sent to the output channel
 	Want(interface{}) bool
 }
 

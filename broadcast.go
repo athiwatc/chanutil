@@ -1,3 +1,4 @@
+// Collection of methods to deal with channels
 package chanutil
 
 import (
