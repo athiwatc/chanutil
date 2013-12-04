@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// Never create this type yourself
 type Broadcast struct {
 	sender   chan interface{}
 	receiver []chan interface{}

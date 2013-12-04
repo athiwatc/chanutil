@@ -6,6 +6,7 @@ type FilterInterface interface {
 	Want(interface{}) bool
 }
 
+// Never create this type yourself
 type Filter struct {
 	sender   chan interface{}
 	receiver chan interface{}
