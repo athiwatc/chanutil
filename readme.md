@@ -1,5 +1,6 @@
 # chanutil
-[![Build Status](https://travis-ci.org/athiwatc/chanutil.png?branch=master)](https://travis-ci.org/athiwatc/chanutil)
+[![Build Status](https://drone.io/github.com/athiwatc/chanutil/status.png)](https://drone.io/github.com/athiwatc/chanutil/latest)
+
 Everything that I use in my projects that has pattern that deals with channels.
 All of this is the pattern I needed in each of my projects which might not be ideal for general uses.
 All pattern are self generating, this means that it's not flexible but allows a constant way of using the library through out.
