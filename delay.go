@@ -15,7 +15,7 @@ type Delay struct {
 
 // Use this function to create a delay channel.
 // A delay channel will make sure that all value are sent before closing will happen.
-// This means that Receiver channal will not close after the Sender is closed and will wait till all value are sent.
+// This means that Receiver channal will not close after the Sender is closed and will wait till all values are sent.
 func NewDelay(delay time.Duration, buffer_len int) *Delay {
 	d := &Delay{}
 	d.delay = delay
