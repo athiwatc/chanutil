@@ -1,5 +1,6 @@
 # chanutil
 [![Build Status](https://drone.io/github.com/athiwatc/chanutil/status.png)](https://drone.io/github.com/athiwatc/chanutil/latest)
+[![Coverage Status](https://coveralls.io/repos/athiwatc/chanutil/badge.png?branch=master)](https://coveralls.io/r/athiwatc/chanutil?branch=master)
 
 Everything that I use in my projects that has pattern that deals with channels.
 All of this is the pattern I needed in each of my projects which might not be ideal for general uses.
