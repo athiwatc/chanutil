@@ -5,7 +5,10 @@ import (
 	"time"
 )
 
-// Never create this type yourself.
+// Delay allows the user to delay the output of a value to the receiver
+// Delay will always be pulling value. Value are pull before the delay happens this means that sender will not block for very long.
+// A delay channel will make sure that all value are sent before closing will happen.
+// This means that Receiver channal will not close after the Sender is closed and will wait till all values are sent.
 type Delay struct {
 	sender   chan interface{}
 	receiver chan interface{}
@@ -14,8 +17,6 @@ type Delay struct {
 }
 
 // Use this function to create a delay channel.
-// A delay channel will make sure that all value are sent before closing will happen.
-// This means that Receiver channal will not close after the Sender is closed and will wait till all values are sent.
 func NewDelay(delay time.Duration, buffer_len int) *Delay {
 	d := &Delay{}
 	d.delay = delay

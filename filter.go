@@ -6,7 +6,7 @@ type FilterInterface interface {
 	Want(interface{}) bool
 }
 
-// Never create this type yourself
+// Filter allows the user to filter value pass into a channel using a custom function
 type Filter struct {
 	sender   chan interface{}
 	receiver chan interface{}

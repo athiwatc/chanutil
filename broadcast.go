@@ -5,7 +5,8 @@ import (
 	"sync"
 )
 
-// Never create this type yourself
+// Broadcast allow a value send to the sender channel to be multiplex to all receiver created with CreateReceiver() method.
+// If you close the sender, all of the receiver will also be closed.
 type Broadcast struct {
 	sender   chan interface{}
 	receiver []chan interface{}
