@@ -6,7 +6,7 @@ type Link struct {
 }
 
 // Create a new linker.
-func NewLink(a, b chan interface{}) *Link {
+func NewLink(dst, src chan interface{}) *Link {
 	l := &Link{}
 	l.done = make(chan struct{})
 
@@ -16,11 +16,11 @@ func NewLink(a, b chan interface{}) *Link {
 			select {
 			case <-l.done:
 				break outter
-			case v, ok := <-b:
+			case v, ok := <-src:
 				if ok {
-					a <- v
+					dst <- v
 				} else {
-					close(a)
+					close(dst)
 					close(l.done)
 					break outter
 				}
